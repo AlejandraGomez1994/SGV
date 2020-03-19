@@ -102,23 +102,12 @@
 		$db=Db::getConnect();
         $insert=$db->prepare("INSERT INTO clientes (IdCliente,NomCliente,apellido,Telefono,celular,Email,Municipio,Direccion) VALUES('$cliente->idCliente','$cliente->nomCliente','$cliente->apellido','$cliente->telefono','$cliente->celular','$cliente->email','$cliente->municipio','$cliente->direccion')");
 		 if($insert->execute())
-		 {             
-            echo "<script language='javascript'>Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Registro exitoso',
-                showConfirmButton: false,
-                timer: 1500
-              });</script>";
-
-        }
+		 {          
+            return true;
+         }
         else
         {
-            echo "<script language='javascript'>
-            Swal.fire({
-                icon: 'error',
-                title: 'Registro no exitoso',
-              });</script>";
+            return false;
         }
   }
   public static function BuscarClienteId($cliente)
@@ -180,19 +169,14 @@
 		$insert=$db->prepare("UPDATE clientes SET IdCliente='$cliente->idCliente', NomCliente='$cliente->nomCliente', apellido='$cliente->apellido',Telefono='$cliente->telefono',celular='$cliente->celular',Email='$cliente->email',Municipio='$cliente->municipio',Direccion='$cliente->direccion'	WHERE IdCliente = $cliente->idCliente");
 		 if($insert->execute())
 		 {
-            echo "<script language='javascript'>Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Los datos se modificaron exitosamente',
-                showConfirmButton: false,
-                timer: 1500
-              });</script>";
+            return true;
               //header("Location:?Controlador=Controlador&action4=ListarCliente");
 		 }
 		 else
 		 {
-            echo "<script language='javascript'>alert('Los cambios no se guardaron')</script>";
+            return false;
 		 }
     }
 }
 ?>
+ 

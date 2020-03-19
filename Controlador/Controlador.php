@@ -195,9 +195,26 @@ elseif (isset($_GET["registrarcliente"])) {
    $municipio=$_POST["inputMunicipio"];
    $direccion=$_POST["InputDireccion"];
    $cliente=new Cliente($idCliente,$nombre,$apellido,$telefono,$celular,$email,$municipio,$direccion);
-   Cliente::RegistrarCliente($cliente);
-   $listaCliente=Cliente::ListarCliente();
-   require_once("Vista/ListarClientes.php");
+   $registro=Cliente::RegistrarCliente($cliente);
+   if ($registro)
+   {
+    $listaCliente=Cliente::ListarCliente();
+    require_once("Vista/ListarClientes.php");
+     ?>
+  
+      <script language='javascript'>
+         alert("Registro exitoso");
+        </script>
+        <?php
+   } else { $listaCliente=Cliente::ListarCliente();
+    require_once("Vista/ListarClientes.php");?>
+
+      <script language='javascript'>
+         alert("Registro no exitoso");
+        </script>
+<?php
+   }
+  
  }
  else {
    require_once("Vista/RegistrarCliente.php");
@@ -214,9 +231,22 @@ elseif (isset($_GET["modificarcliente"])) {
     $municipio=$_POST["inputMunicipio"];
     $direccion=$_POST["InputDireccion"];
     $cliente=new Cliente($idCliente,$nombre,$apellido,$telefono,$celular,$email,$municipio,$direccion);
-    Cliente::ModificarCliente($cliente);
-    $listaCliente=Cliente::ListarCliente();
+    $modificar=Cliente::ModificarCliente($cliente);
+    if ($modificar)
+    {$listaCliente=Cliente::ListarCliente();
     require_once("Vista/ListarClientes.php");
+    ?>
+    <script language='javascript'>
+         alert("Los cambios se guardaron exitosamente");
+        </script>
+     <?php   
+    }else { $listaCliente=Cliente::ListarCliente();
+      require_once("Vista/ListarClientes.php"); ?> ?>
+      <script language='javascript'>
+         alert("Los cambios no se guardaron con exito");
+        </script>
+      <?php
+    }
   }
   else {
     $idCliente= $_GET["id_cliente"];

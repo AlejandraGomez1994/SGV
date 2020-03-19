@@ -1,0 +1,15 @@
+
+.horizontal-scroll-contenedor{
+overflow-y: hidden; 
+overflow-x: auto;
+width: auto;
+height: 100%;
+padding: 100%;
+white-space: nowrap;
+width: 100%;
+height: 100%;
+margin: 0 10px 0 0;
+padding: 0;
+display: inline-block;
+
+}

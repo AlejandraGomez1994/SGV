@@ -45,7 +45,7 @@
           <i class="fas fa-fw fa-list"></i>
           <span style="color:black">Clientes</span></a>
 
- <a class="nav-item nav-link active" style="font-size:14" href="?listarcitas">
+ <a class="nav-item nav-link active" style="font-size:14px" href="?listarcitas">
           <i class="fas fa-fw fa-list"></i>
           <span style="color:black">Citas agendadas</span></a>
  <a class="nav-item nav-link active" style="font-size:14px" href="?listarmascota">
@@ -102,11 +102,7 @@
   <!-- Page Heading -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <div align="center">
-<h1>Clientes</h1>
-  </div>
-<div align="right">
-<a href="?registrarcliente" style="color:green"><i class="fas fa-plus"></i> Nuevo </a>
-</div>
+<h1>Mascotas</h1>
 <table id="example" class="table table-hover" width="100%">
 <thead class="thead-dark">
   <tr>
@@ -141,7 +137,7 @@ foreach($listaMascotasEmpleados as $mascota)
     <td><?php echo $mascota->getGenero(); ?></td>
     <td><?php echo $mascota->getPelaje(); ?></td>
    
-    <td><a class="btn-outline-primary" style="color:green" href="?validardatos&id_cliente=<?php echo $mascota->getIdCliente(); ?>&nom_mascota=<?php echo $mascota->getNomMascota(); ?>"><div align="center"><i class="fa fa-book"></i></div></a></td>
+    <td><a class="btn-outline-primary" style="color:green" href="?registrarconsulta&id_cliente=<?php echo $mascota->getIdCliente(); ?>&nom_mascota=<?php echo $mascota->getNomMascota(); ?>"><div align="center"><i class="fa fa-book"></i></div></a></td>
     <td><a class="btn-outline-primary" href="?tipocita&id_cliente=<?php echo $mascota->getIdCliente(); ?>&nom_mascota=<?php echo $mascota->getNomMascota(); ?>"><div align="center"><i class="far fa-calendar-alt"></i></div></a>
     </tr>
 	<?php
@@ -254,7 +250,7 @@ foreach($listaMascotasEmpleados as $mascota)
             cursor:pointer;
           
         }
-        .fuente1 {font-size:1.3em;}
+        .fuente1 {font-size:1.1em;}
         .fuente2 {font-size:1em;}
     </style>
   <!-- Bootstrap core JavaScript-->

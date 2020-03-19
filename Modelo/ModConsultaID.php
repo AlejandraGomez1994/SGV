@@ -83,11 +83,11 @@ class ConsultaID
 		return $listaConsultaId;
     }
 
-   public static function BuscarConsulta($id,$nomMascota)
+   public static function BuscarConsulta($nomMascota)
 	{
         $lista=[];
 		$db=Db::getConnect();
-		$sql=$db->query("SELECT * FROM consultas WHERE fecha>=CURDATE() AND id_cliente=$id AND NomMascota='$nomMascota'");
+		$sql=$db->query("SELECT * FROM consultas WHERE fecha>=CURDATE() AND NomMascota='$nomMascota'");//Modificado por Gomez
 
 	foreach ($sql->fetchAll() as $consulta) {
       $lista[]= new ConsultaID($consulta['id_consulta'],$consulta['fecha'],$consulta['procedimiento'],$consulta['id_veterinario'],$consulta['id_cliente'],$consulta['NomMascota']);
