@@ -461,14 +461,23 @@ elseif (isset($_GET["registrarempleado"])) {
     $email=$_POST["inputEmail"];
     $direccion=$_POST["inputDireccion"];
     $empleado=new Empleado($idEmpleado,$nombre,$idEspecialidad,$telefono,$email,$direccion);
-    Empleado::RegistrarEmpleado($empleado);
-    $empleado=Empleado::ListarEmpleado();
-    require_once("Vista/ListarEmpleados.php");
-  }
-  else {
-    $especialidad=EspecialidadId::ListarEspecialidad();
-    require_once("Vista/RegistrarEmpleado.php");
-  }
+    $registro=Empleado::RegistrarEmpleado($empleado);//Modifico alerta
+    if ($registro){
+      $empleado=Empleado::ListarEmpleado();
+      require_once("Vista/ListarEmpleados.php");?>
+         <script language='javascript'>
+         alert("Registro exitoso");
+        </script>
+     <?php   
+    }else {  $especialidad=EspecialidadId::ListarEspecialidad();
+      require_once("Vista/RegistrarEmpleado.php"); ?>
+      <script language='javascript'>
+         alert("Registro no exitoso");
+        </script>
+      <?php
+    }
+    
+  }  
 }
 
 elseif (isset($_GET["registrardatos"])) {
